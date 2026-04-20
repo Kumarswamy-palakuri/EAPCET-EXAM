@@ -9,8 +9,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import ResultPage from "./pages/ResultPage";
 
 const HomeRedirect = () => {
-  const { isAuthenticated, isAdmin } = useAuth();
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
+  const { isAdmin } = useAuth();
   return <Navigate to={isAdmin ? "/admin" : "/dashboard"} replace />;
 };
 
@@ -20,11 +19,7 @@ const App = () => (
     <Route path="/login" element={<LoginPage />} />
     <Route
       path="/dashboard"
-      element={
-        <ProtectedRoute allowRoles={["student", "admin"]}>
-          <DashboardPage />
-        </ProtectedRoute>
-      }
+      element={<DashboardPage />}
     />
     <Route
       path="/exam/:examId"

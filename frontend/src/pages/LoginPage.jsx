@@ -1,15 +1,17 @@
 import { GoogleLogin } from "@react-oauth/google";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const LoginPage = () => {
   const { signInWithGoogle } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
       const user = await signInWithGoogle(credentialResponse.credential);
-      navigate(user.role === "admin" ? "/admin" : "/dashboard", { replace: true });
+      const from = location.state?.from || (user.role === "admin" ? "/admin" : "/dashboard");
+      navigate(from, { replace: true });
     } catch (error) {
       alert(error?.response?.data?.message || "Google login failed. Please retry.");
     }
