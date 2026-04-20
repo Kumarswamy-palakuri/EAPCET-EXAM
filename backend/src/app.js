@@ -9,7 +9,11 @@ const app = express();
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    origin: [
+      process.env.CLIENT_URL,
+      process.env.CLIENT_URL ? process.env.CLIENT_URL.replace(/\/$/, "") : null,
+      "http://localhost:5173"
+    ].filter(Boolean),
     credentials: true,
   })
 );
