@@ -1,0 +1,55 @@
+[
+{"question":"What is the SI unit of force?","options":["Newton","Joule","Pascal","Watt"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Speed is defined as?","options":["Distance/Time","Time/Distance","Acceleration/Time","Force/Distance"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Unit of power is?","options":["Watt","Joule","Newton","Volt"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Acceleration due to gravity on Earth is?","options":["9.8 m/s²","8.9 m/s²","10.8 m/s²","7.8 m/s²"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Who discovered gravity?","options":["Newton","Einstein","Galileo","Tesla"],"answer":1,"subject":"Physics","year":2024},
+
+{"question":"What is momentum?","options":["Mass × Velocity","Force × Distance","Velocity × Time","Mass × Acceleration"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Unit of momentum is?","options":["kg m/s","Newton","Joule","Watt"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Energy is measured in?","options":["Joule","Watt","Newton","Pascal"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Work formula is?","options":["Force × Distance","Mass × Velocity","Power × Time","Velocity × Time"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Unit of work is?","options":["Joule","Newton","Watt","Volt"],"answer":1,"subject":"Physics","year":2024},
+
+{"question":"Which law explains inertia?","options":["Newton's First Law","Second Law","Third Law","Ohm's Law"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Force equals?","options":["Mass × Acceleration","Mass × Velocity","Velocity × Time","Work × Time"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Unit of pressure?","options":["Pascal","Newton","Joule","Watt"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Pressure formula?","options":["Force/Area","Mass/Volume","Work/Time","Energy/Time"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Density formula?","options":["Mass/Volume","Force/Area","Energy/Time","Velocity/Time"],"answer":1,"subject":"Physics","year":2024},
+
+{"question":"Unit of density?","options":["kg/m³","N/m²","J/s","m/s"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Which wave needs medium?","options":["Sound","Light","X-rays","Gamma"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Speed of light is?","options":["3×10^8 m/s","3×10^6 m/s","3×10^5 m/s","3×10^7 m/s"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Unit of frequency?","options":["Hertz","Watt","Newton","Joule"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Frequency formula?","options":["1/Time","Distance/Time","Force/Area","Mass/Volume"],"answer":1,"subject":"Physics","year":2024},
+
+{"question":"Unit of electric current?","options":["Ampere","Volt","Ohm","Watt"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Ohm's law formula?","options":["V = IR","P = VI","F = ma","W = Fd"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Unit of resistance?","options":["Ohm","Volt","Ampere","Watt"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Unit of voltage?","options":["Volt","Ampere","Ohm","Watt"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Unit of capacitance?","options":["Farad","Henry","Volt","Ohm"],"answer":1,"subject":"Physics","year":2024},
+
+{"question":"Magnetic field unit?","options":["Tesla","Weber","Volt","Ampere"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Unit of charge?","options":["Coulomb","Volt","Ampere","Ohm"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Work-energy theorem states?","options":["Work = Change in KE","Force = Mass × Acceleration","Energy = Power × Time","Velocity = Distance/Time"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Kinetic energy formula?","options":["1/2 mv²","mv","mgh","F×d"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Potential energy formula?","options":["mgh","mv²","F×d","P×t"],"answer":1,"subject":"Physics","year":2024},
+
+{"question":"Unit of power?","options":["Watt","Joule","Newton","Volt"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Power formula?","options":["Work/Time","Force × Distance","Energy × Time","Velocity × Time"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Which lens converges light?","options":["Convex","Concave","Plane","None"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Which lens diverges light?","options":["Concave","Convex","Plane","None"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Mirror used in vehicles?","options":["Convex","Concave","Plane","None"],"answer":1,"subject":"Physics","year":2024},
+
+{"question":"SI unit of temperature?","options":["Kelvin","Celsius","Fahrenheit","Rankine"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Heat is a form of?","options":["Energy","Force","Mass","Power"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Unit of heat?","options":["Joule","Watt","Newton","Volt"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Thermometer measures?","options":["Temperature","Pressure","Density","Volume"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Barometer measures?","options":["Pressure","Temperature","Volume","Mass"],"answer":1,"subject":"Physics","year":2024},
+
+{"question":"Hydrometer measures?","options":["Density","Pressure","Temperature","Volume"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Ammeter measures?","options":["Current","Voltage","Resistance","Power"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Voltmeter measures?","options":["Voltage","Current","Resistance","Power"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Resistance depends on?","options":["Length","Time","Mass","Energy"],"answer":1,"subject":"Physics","year":2024},
+{"question":"Sound travels fastest in?","options":["Solids","Liquids","Gases","Vacuum"],"answer":1,"subject":"Physics","year":2024}
+]
