@@ -236,75 +236,94 @@ const ExamPage = () => {
   const currentResponse = responses[currentQuestion?._id] || {};
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900">
-      <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 px-3 py-3 backdrop-blur sm:px-4">
-        <div className="mx-auto flex w-full max-w-[1700px] flex-wrap items-center justify-between gap-3">
-          <div>
-            <h1 className="font-heading text-lg font-bold sm:text-xl">{exam.title}</h1>
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-              {mode === "subject" ? `${subject} Test` : "Full Test"} | Question {currentIndex + 1} /
-              {questions.length}
-            </p>
+    <div className="min-h-screen bg-slate-50/50 text-slate-900 relative">
+      <header className="sticky top-0 z-20 border-b border-indigo-100 bg-white/80 px-3 py-3 backdrop-blur-xl sm:px-6 glass-panel shadow-sm transition-all duration-300">
+        <div className="mx-auto flex w-full max-w-[1700px] flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="hidden h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-600 to-blue-500 text-white shadow-md sm:flex">
+               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+            </div>
+            <div>
+              <h1 className="font-heading text-lg font-bold sm:text-xl text-indigo-950 flex items-center gap-2">
+                {exam.title}
+              </h1>
+              <p className="text-[11px] font-bold uppercase tracking-widest text-indigo-500">
+                {mode === "subject" ? `${subject} Test` : "Full Simulator"} <span className="mx-1">•</span> Q {currentIndex + 1} / {questions.length}
+              </p>
+            </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <button
               type="button"
               onClick={() => setPaletteOpen((prev) => !prev)}
-              className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold uppercase tracking-wide text-slate-700 lg:hidden"
+              className="rounded-xl border border-indigo-200 bg-indigo-50/50 px-3 py-2 text-xs font-bold uppercase tracking-wide text-indigo-700 lg:hidden hover:bg-indigo-100 transition-colors"
             >
               Palette
             </button>
             <button
               type="button"
               onClick={toggleFullscreen}
-              className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold uppercase tracking-wide text-slate-700"
+              className="rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-bold uppercase tracking-wide text-slate-700 hover:bg-slate-50 transition-colors hidden sm:block shadow-sm"
             >
               Fullscreen
             </button>
             <button
               type="button"
               onClick={() => setShowExitWarning(true)}
-              className="rounded-xl border border-rose-300 bg-rose-50 px-3 py-2 text-xs font-bold uppercase tracking-wide text-rose-700"
+              className="rounded-xl border border-rose-200 bg-rose-50 px-3.5 py-2 text-xs font-bold uppercase tracking-wide text-rose-600 hover:bg-rose-100 transition-colors shadow-sm"
             >
               Leave
             </button>
-            <TimerBadge seconds={remainingSeconds} />
+            <div className="pl-1 sm:pl-2">
+              <TimerBadge seconds={remainingSeconds} />
+            </div>
           </div>
         </div>
       </header>
 
       {lastTenMinuteWarning && (
-        <div className="bg-rose-600 px-4 py-2 text-center text-sm font-semibold text-white">
-          Final 10 minutes remaining. Review marked and unanswered questions now.
+        <div className="bg-gradient-to-r from-rose-500 to-rose-600 px-4 py-2.5 text-center text-sm font-bold text-white shadow-md animate-pulse">
+          ⚠️ Final 10 minutes remaining. Review marked and unanswered questions now.
         </div>
       )}
 
-      <main className="mx-auto grid w-full max-w-[1700px] gap-4 px-3 py-4 lg:grid-cols-[320px_1fr] lg:px-4">
-        <div className="hidden lg:block">
-          <QuestionPalette
-            questions={questions}
-            responses={responses}
-            currentIndex={currentIndex}
-            onJump={setCurrentIndex}
-          />
+      <main className="mx-auto grid w-full max-w-[1700px] gap-6 px-3 py-6 lg:grid-cols-[320px_1fr] lg:px-6">
+        <div className="hidden lg:block relative">
+          <div className="sticky top-24">
+            <QuestionPalette
+              questions={questions}
+              responses={responses}
+              currentIndex={currentIndex}
+              onJump={setCurrentIndex}
+            />
+          </div>
         </div>
 
-        <section className="rounded-2xl bg-white p-4 shadow-panel sm:p-6">
-          <div className="mb-4 flex items-center justify-between border-b border-slate-200 pb-3">
-            <div>
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                Question {currentIndex + 1}
+        <section className="rounded-3xl bg-white p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 sm:p-8 flex flex-col relative overflow-hidden animate-fade-in-up">
+          <div className="mb-6 flex flex-wrap items-center justify-between border-b border-slate-100/80 pb-4 gap-2">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center bg-indigo-50 text-indigo-700 font-mono text-sm font-bold px-3 py-1.5 rounded-lg border border-indigo-100/50">
+                Q.{currentIndex + 1}
+              </div>
+              <p className="text-xs font-bold uppercase tracking-wider text-slate-400 bg-slate-50 px-2.5 py-1 rounded-md">
+                {currentQuestion?.subject}
               </p>
-              <p className="text-xs text-slate-500">Subject: {currentQuestion?.subject}</p>
             </div>
+            
+            {currentResponse.markedForReview && (
+              <span className="flex items-center gap-1.5 text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-100">
+                <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" /></svg>
+                Marked
+              </span>
+            )}
           </div>
 
-          <h2 className="text-lg font-semibold leading-relaxed text-slate-900 sm:text-xl">
+          <h2 className="text-lg font-bold leading-relaxed text-slate-800 sm:text-xl lg:text-2xl tracking-normal">
             {currentQuestion?.question}
           </h2>
 
-          <div className="mt-6 grid gap-3">
+          <div className="mt-8 grid gap-4">
             {currentQuestion?.options?.map((option, index) => {
               const selected = currentResponse.selectedOption === index;
               return (
@@ -316,113 +335,136 @@ const ExamPage = () => {
                       selectedOption: index,
                     })
                   }
-                  className={`rounded-xl border px-4 py-3 text-left transition ${
+                  className={`group relative rounded-2xl border-2 px-5 py-4 text-left transition-all duration-200 overflow-hidden ${
                     selected
-                      ? "border-blue-400 bg-blue-50 text-blue-900"
-                      : "border-slate-300 bg-white text-slate-700 hover:border-slate-400"
+                      ? "border-blue-500 bg-blue-50/50 shadow-[0_4px_20px_-4px_rgba(59,130,246,0.15)] ring-4 ring-blue-500/10"
+                      : "border-slate-200/60 bg-white hover:border-blue-300 hover:bg-slate-50 shadow-sm hover:shadow"
                   }`}
                 >
-                  <span className="font-semibold">{String.fromCharCode(65 + index)}.</span> {option}
+                  <div className="flex items-center gap-4">
+                    <div className={`flex shrink-0 h-8 w-8 items-center justify-center rounded-full text-sm font-bold transition-colors ${
+                      selected 
+                        ? "bg-blue-500 text-white shadow-inner" 
+                        : "bg-slate-100 text-slate-500 group-hover:bg-blue-100 group-hover:text-blue-600"
+                    }`}>
+                      {String.fromCharCode(65 + index)}
+                    </div>
+                    <span className={`font-medium sm:text-lg ${selected ? "text-blue-950 font-semibold" : "text-slate-700"}`}>
+                      {option}
+                    </span>
+                  </div>
                 </button>
               );
             })}
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-2 border-t border-slate-200 pt-4">
-            <button
-              type="button"
-              onClick={goPrevious}
-              disabled={currentIndex === 0}
-              className="rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Previous
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                updateCurrentResponse({ markedForReview: false });
-                goNext();
-              }}
-              className="rounded-xl bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-600"
-            >
-              Save & Next
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                updateCurrentResponse({ markedForReview: true });
-                goNext();
-              }}
-              className="rounded-xl bg-amber-400 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-amber-300"
-            >
-              Mark for Review
-            </button>
-            <button
-              type="button"
-              onClick={() => updateCurrentResponse({ selectedOption: null, markedForReview: false })}
-              className="rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100"
-            >
-              Clear Response
-            </button>
-            <button
-              type="button"
-              disabled={submitting}
-              onClick={() => {
-                const ok = window.confirm("Submit exam now? You cannot change answers after submit.");
-                if (ok) handleSubmit(false);
-              }}
-              className="ml-auto rounded-xl bg-rose-600 px-5 py-2 text-sm font-semibold text-white hover:bg-rose-500 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              {submitting ? "Submitting..." : "Submit Exam"}
-            </button>
+          <div className="mt-auto pt-8">
+            <div className="flex flex-wrap items-center gap-3 border-t border-slate-100 pt-5">
+              <button
+                type="button"
+                onClick={goPrevious}
+                disabled={currentIndex === 0}
+                className="rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-bold text-slate-600 shadow-sm transition-all hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                &larr; Prev
+              </button>
+              
+              <button
+                type="button"
+                onClick={() => updateCurrentResponse({ selectedOption: null, markedForReview: false })}
+                className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-2.5 text-sm font-bold text-slate-600 transition-all hover:bg-slate-100"
+              >
+                Clear
+              </button>
+              
+              <button
+                type="button"
+                onClick={() => {
+                  updateCurrentResponse({ markedForReview: true });
+                  goNext();
+                }}
+                className="rounded-xl border border-amber-200 bg-amber-50 px-5 py-2.5 text-sm font-bold text-amber-700 transition-all hover:bg-amber-100 shadow-sm"
+              >
+                Mark & Next
+              </button>
+              
+              <button
+                type="button"
+                onClick={() => {
+                  updateCurrentResponse({ markedForReview: false });
+                  goNext();
+                }}
+                className="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-2.5 text-sm font-bold text-white shadow-md transition-all hover:shadow-lg hover:brightness-110"
+              >
+                Save & Next &rarr;
+              </button>
+              
+              <div className="ml-auto">
+                <button
+                  type="button"
+                  disabled={submitting}
+                  onClick={() => {
+                    const ok = window.confirm("Ready to submit your exam? You cannot change answers after submitting.");
+                    if (ok) handleSubmit(false);
+                  }}
+                  className="rounded-xl bg-gradient-to-r from-rose-500 to-rose-600 px-6 py-2.5 text-sm font-bold text-white shadow-md transition-all hover:shadow-lg hover:brightness-110 disabled:cursor-not-allowed disabled:grayscale"
+                >
+                  {submitting ? "Submitting..." : "Submit Test"}
+                </button>
+              </div>
+            </div>
           </div>
         </section>
       </main>
 
       {paletteOpen && (
-        <div className="fixed inset-0 z-30 bg-slate-900/50 p-4 lg:hidden">
-          <div className="mx-auto mt-4 max-w-md">
-            <QuestionPalette
-              questions={questions}
-              responses={responses}
-              currentIndex={currentIndex}
-              onJump={(index) => {
-                setCurrentIndex(index);
-                setPaletteOpen(false);
-              }}
-            />
-            <button
-              type="button"
-              onClick={() => setPaletteOpen(false)}
-              className="mt-3 w-full rounded-xl bg-white py-3 text-sm font-semibold text-slate-700"
-            >
-              Close Palette
-            </button>
+        <div className="fixed inset-0 z-50 flex flex-col justify-end bg-slate-900/60 p-4 backdrop-blur-sm lg:hidden animate-fade-in">
+          <div className="w-full max-w-md mx-auto bg-white rounded-3xl p-5 shadow-2xl animate-slide-up mb-safe">
+            <div className="flex justify-between items-center mb-4 pb-3 border-b border-slate-100">
+               <h3 className="font-bold text-slate-800">Question Palette</h3>
+               <button onClick={() => setPaletteOpen(false)} className="p-1 text-slate-400 hover:text-slate-600 bg-slate-50 rounded-full">
+                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+               </button>
+            </div>
+            <div className="max-h-[60vh] overflow-y-auto exam-scrollbar pr-2 mb-4">
+              <QuestionPalette
+                questions={questions}
+                responses={responses}
+                currentIndex={currentIndex}
+                onJump={(index) => {
+                  setCurrentIndex(index);
+                  setPaletteOpen(false);
+                }}
+              />
+            </div>
           </div>
         </div>
       )}
 
       {showExitWarning && (
-        <div className="fixed inset-0 z-40 flex items-center justify-center bg-slate-950/50 px-4">
-          <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-panel">
-            <h3 className="font-heading text-xl font-bold text-slate-900">Leave current exam?</h3>
-            <p className="mt-2 text-sm text-slate-600">
-              Your answers are auto-saved locally, but the timer continues. Leave only if required.
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm animate-fade-in">
+          <div className="w-full max-w-md rounded-3xl bg-white p-7 shadow-2xl animate-slide-up text-center border-t-4 border-rose-500">
+            <div className="w-16 h-16 bg-rose-100 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-4">
+               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            </div>
+            <h3 className="font-heading text-xl font-bold text-slate-900">Leave Exam in Progress?</h3>
+            <p className="mt-3 text-sm text-slate-500 leading-relaxed font-medium">
+              Your responses are auto-saved to your device, but the exam timer will continue running in the background. Are you sure you want to leave?
             </p>
-            <div className="mt-5 flex gap-2">
+            <div className="mt-8 flex gap-3">
               <button
                 type="button"
                 onClick={() => setShowExitWarning(false)}
-                className="flex-1 rounded-xl border border-slate-300 px-4 py-2 font-semibold text-slate-700"
+                className="flex-1 rounded-xl border-2 border-slate-200 px-4 py-2.5 font-bold text-slate-700 hover:bg-slate-50 transition-colors"
               >
-                Continue Test
+                Return to Exam
               </button>
               <button
                 type="button"
                 onClick={() => navigate("/dashboard")}
-                className="flex-1 rounded-xl bg-rose-600 px-4 py-2 font-semibold text-white"
+                className="flex-1 rounded-xl bg-rose-600 px-4 py-2.5 font-bold text-white shadow-md hover:bg-rose-700 hover:shadow-lg transition-all"
               >
-                Leave Exam
+                Yes, Leave
               </button>
             </div>
           </div>
